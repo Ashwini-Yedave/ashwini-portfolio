@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght=0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0e17;--surface:#111520;--surface2:#161b2e;
+  --accent:#4f8ef7;--accent2:#a78bfa;--accent3:#34d399;
+  --text:#e8eaf6;--muted:#8892b0;
+  --border:rgba(79,142,247,0.15);--card:rgba(22,27,46,0.85);
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(11,14,23,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--accent);letter-spacing:1px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;letter-spacing:0.5px;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:8rem;padding-bottom:3rem;max-width:1000px;margin:0 auto;padding-left:2rem;padding-right:2rem}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.3);border-radius:100px;padding:0.35rem 1rem;font-size:0.8rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:0.5px;width:fit-content}
+.dot{width:7px;height:7px;background:var(--accent3);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:550px;margin-bottom:2.5rem;line-height:1.8}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;transition:opacity 0.2s;text-align:center}
+.btn-primary:hover{opacity:0.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;transition:background 0.2s;text-align:center}
+.btn-outline:hover{background:var(--surface)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1}
+.stat-lbl{font-size:0.8rem;color:var(--muted);letter-spacing:0.5px;margin-top:0.3rem}
+.section-label{font-size:0.75rem;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:0.75rem;font-family:'Syne',sans-serif}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;margin-bottom:1.5rem;letter-spacing:-0.5px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:1.5rem}
+.about-text{color:var(--muted);line-height:1.9}
+.about-text p{margin-bottom:1rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}
+.tag{background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);color:var(--accent);border-radius:6px;padding:0.3rem 0.75rem;font-size:0.8rem;font-family:'Syne',sans-serif}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.skill-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem}
+.skill-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.icon-blue{background:rgba(79,142,247,0.15);color:var(--accent)}
+.icon-purple{background:rgba(167,139,250,0.15);color:var(--accent2)}
+.icon-green{background:rgba(52,211,153,0.15);color:var(--accent3)}
+.icon-amber{background:rgba(251,191,36,0.15);color:#fbbf24}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.skill-item{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem}
+.skill-name{color:var(--text)}
+.skill-bar-wrap{width:100px;height:5px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden}
+.skill-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;gap:0;margin-top:2rem;position:relative}
+.exp-list::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:1px;background:var(--border)}
+.exp-item{display:grid;grid-template-columns:36px 1fr;gap:1.5rem;padding-bottom:2.5rem}
+.exp-dot{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;z-index:1;flex-shrink:0}
+.exp-body{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem}
+.exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+.exp-badge{font-size:0.7rem;font-family:'Syne',sans-serif;font-weight:600;padding:0.2rem 0.65rem;border-radius:20px;letter-spacing:0.3px;white-space:nowrap}
+.badge-current{background:rgba(52,211,153,0.12);color:var(--accent3);border:1px solid rgba(52,211,153,0.25)}
+.badge-prev{background:rgba(79,142,247,0.1);color:var(--accent);border:1px solid rgba(79,142,247,0.2)}
+.exp-company{color:var(--accent);font-size:0.9rem;font-weight:600;margin-bottom:0.25rem}
+.exp-date{font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;letter-spacing:0.3px}
+.exp-promo{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);color:var(--accent2);border-radius:6px;padding:0.25rem 0.7rem;font-size:0.75rem;font-family:'Syne',sans-serif;margin-bottom:0.9rem}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
+.exp-points li{color:var(--muted);font-size:0.88rem;padding-left:1rem;position:relative}
+.exp-points li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:0.75rem;top:3px}
+
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
+.proj-card:hover{border-color:rgba(79,142,247,0.4);transform:translateY(-3px)}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem}
+.proj-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:rgba(79,142,247,0.1)}
+.proj-link{color:var(--muted);font-size:0.8rem;text-decoration:none;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:6px}
+.proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.5rem}
+.proj-desc{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-bottom:1rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.proj-tag{background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);color:var(--accent3);border-radius:5px;padding:0.2rem 0.55rem;font-size:0.75rem;font-family:'Syne',sans-serif}
+
+.contact-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem;margin-top:2rem}
+.contact-box h3{font-size:2rem;font-weight:800;margin-bottom:0.5rem;text-align:center}
+.contact-box .sub{color:var(--muted);text-align:center;margin-bottom:2.5rem}
+.contact-details{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.contact-item{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.85rem}
+.contact-item-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ci-phone{background:rgba(52,211,153,0.12);color:var(--accent3)}
+.ci-email{background:rgba(79,142,247,0.12);color:var(--accent)}
+.contact-item-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.15rem}
+.contact-item-value{font-size:0.9rem;color:var(--text);font-weight:500;word-break:break-all}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.contact-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.6rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:600;font-size:0.88rem;text-decoration:none;transition:all 0.2s}
+.cl-email{background:var(--accent);color:#fff}.cl-email:hover{opacity:0.85}
+.cl-linkedin{background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.3);color:var(--accent)}.cl-linkedin:hover{background:rgba(79,142,247,0.22)}
+.cl-github{border:1px solid var(--border);color:var(--text)}.cl-github:hover{background:var(--surface);border-color:var(--accent2);color:var(--accent2)}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;color:var(--muted);font-size:0.8rem;margin-top:3rem}
+
+/* MOBILE RESPONSIVE OPTIMIZATIONS */
+@media (max-width: 768px) {
+  nav {
+    position: static;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  .nav-links {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .hero-cta .btn-primary, .hero-cta .btn-outline {
+    flex: 1 1 100%;
+  }
+  .about-grid, .skills-grid, .projects-grid, .contact-details {
+    grid-template-columns: 1fr;
+  }
+  .about-grid {
+    gap: 1.5rem;
+  }
+  .contact-box {
+    padding: 1.5rem;
+  }
+  .contact-links .contact-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  section {
+    padding: 3rem 1rem;
+  }
+  .hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .hero-stats {
+    gap: 1.5rem;
+    justify-content: space-between;
+  }
+  .hero-stats > div {
+    flex: 1 1 40%;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">AY.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge"><span class="dot"></span> Open to Opportunities</div>
+  <h1>Hi, I'm<br/><span>Ashwini Yedave</span></h1>
+  <p class="hero-sub">Software Engineer with 4+ years crafting scalable frontend applications with Angular and building robust backend systems with Java. Turning complex requirements into clean, performant solutions.</p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#contact">Get In Touch</a>
+    <a class="btn-outline" href="#projects">View Work</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">4+</div><div class="stat-lbl">Years Experience</div></div>
+    <div><div class="stat-num">2</div><div class="stat-lbl">Companies</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="section-title">Passionate about building<br/>great software</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Software Engineer with 4 years of hands-on experience in Angular frontend development and practical Java backend skills. I started my career as an intern at Zest India IT Services, grew into an Angular Developer role, and am currently working at Wsfx Global Pay.</p>
+      <p>My focus is clean architecture, reusable components, and delivering features that genuinely improve user experience. Whether it's a complex Angular SPA or a Spring Boot REST API, I bring the same attention to detail.</p>
+      <div class="tag-row">
+        <span class="tag">Angular</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Java</span>
+        <span class="tag">Spring Boot</span>
+        <span class="tag">RxJS</span>
+        <span class="tag">REST APIs</span>
+      </div>
+    </div>
+    <div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
+        <div style="margin-bottom:1.2rem">
+          <div style="font-family:'Syne',sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem">Current Role</div>
+          <div style="font-weight:500">Software Engineer · Wsfx Global Pay</div>
+        </div>
+        <div style="margin-bottom:1.2rem">
+          <div style="font-family:'Syne',sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem">Primary Stack</div>
+          <div style="font-weight:500">Angular · Java · Spring Boot</div>
+        </div>
+        <div style="margin-bottom:1.2rem">
+          <div style="font-family:'Syne',sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem">Experience</div>
+          <div style="font-weight:500">4+ Years</div>
+        </div>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem">Focus</div>
+          <div style="font-weight:500">Frontend-heavy Full Stack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Skills</div>
+  <div class="section-title">What I work with</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon icon-blue">⚡</div> Angular & Frontend</div>
+      <ul class="skill-list">
+        <li class="skill-item"><span class="skill-name">Angular (v12–17)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">TypeScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">RxJS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">NgRx / State Mgmt</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">HTML5 / CSS3 / SCSS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon icon-purple">☕</div> Java & Backend</div>
+      <ul class="skill-list">
+        <li class="skill-item"><span class="skill-name">Core Java</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Spring Boot</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">REST API Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Maven</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">JUnit / Testing</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon icon-green">🛠</div> Tools & DevOps</div>
+      <ul class="skill-list">
+        <li class="skill-item"><span class="skill-name">Git / GitHub / GitLab</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Jenkins / CI/CD</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:68%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Postman / Swagger</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon icon-amber">🗄</div> Databases</div>
+      <ul class="skill-list">
+        <li class="skill-item"><span class="skill-name">MySQL / PostgreSQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Hibernate / JPA</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">SQL Query Optimization</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">
+        <div class="skill-icon icon-purple">🤖</div>
+        AI Tools & Productivity
+      </div>
+      <ul class="skill-list">
+        <li class="skill-item"><span class="skill-name">GitHub Copilot</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">ChatGPT</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Google Gemini</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Claude AI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">OpenAI Codex</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="section-title">My journey so far</div>
+  <div class="exp-list">
+
+    <!-- Wsfx Global Pay - Current -->
+    <div class="exp-item">
+      <div class="exp-dot">💼</div>
+      <div class="exp-body">
+        <div class="exp-header">
+          <div class="exp-role">Software Engineer</div>
+          <span class="exp-badge badge-current">● Currently Working</span>
+        </div>
+        <div class="exp-company">Wsfx Global Pay</div>
+        <div class="exp-date">09 Oct 2024 – Present</div>
+        <ul class="exp-points">
+          <li>Building and maintaining Angular-based web applications for Wsfx Global Pay's financial platform</li>
+          <li>Developing responsive, high-performance UI components using Angular and TypeScript</li>
+          <li>Integrating frontend modules with Java Spring Boot REST APIs for seamless data flow</li>
+          <li>Collaborating in Agile sprints, participating in code reviews and technical planning</li>
+          <li>Ensuring application quality through unit testing with Jasmine and Karma</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Zest India IT Services -->
+    <div class="exp-item">
+      <div class="exp-dot">🚀</div>
+      <div class="exp-body">
+        <div class="exp-header">
+          <div class="exp-role">Angular Developer</div>
+          <span class="exp-badge badge-prev">Zest India IT Services</span>
+        </div>
+        <div class="exp-company">Zest India IT Services</div>
+        <div class="exp-date">01 Jun 2022 – 04 Oct 2024 · 2 yrs 4 months</div>
+        <div class="exp-promo">⬆ Promoted from Intern → Angular Developer</div>
+        <ul class="exp-points">
+          <li>Began as an intern, quickly promoted to full-time Angular Developer role based on performance</li>
+          <li>Developed and maintained Angular modules and feature components for client-facing web applications</li>
+          <li>Built reusable Angular component libraries that improved team development speed</li>
+          <li>Worked with Java backend teams to design, document, and consume RESTful APIs</li>
+          <li>Implemented lazy loading and route optimization, improving initial page load time by 20%</li>
+          <li>Wrote unit tests using Jasmine and Karma; improved test coverage across key modules</li>
+          <li>Participated in full SDLC — requirements, development, testing, and production support</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <div class="section-title">Things I've built</div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-icon">⚙️</div><div><span class="proj-link">Featured</span></div></div>
+      <div class="proj-title">Admin Dashboard</div>
+      <div class="proj-desc">Built a scalable Angular Admin Dashboard for enterprise operations including Employee, User, Partner, Orders, Consumers, Leads, Reports, Role & Permission Management, and Rate Rules configuration. Designed modular architecture for efficient system control and improved admin productivity.</div>
+      <div class="proj-tags"><span class="proj-tag">Angular</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-icon">🛒</div><div><span class="proj-link">Featured</span></div></div>
+      <div class="proj-title">E-Commerce Web App</div>
+      <div class="proj-desc">Full-stack e-commerce application with Angular frontend and Java backend. Includes product catalog, cart management, order tracking, and payment integration.</div>
+      <div class="proj-tags"><span class="proj-tag">Angular</span><span class="proj-tag">Java</span><span class="proj-tag">MySQL</span><span class="proj-tag">REST API</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-icon">💰</div></div>
+      <div class="proj-title">Expense Tracker Project</div>
+      <div class="proj-desc"> A full-stack expense tracking application built using Angular, Java, Spring Boot, and MySQL. It allows users to efficiently manage and analyze personal or team expenses with real-time insights.</div>
+      <div class="proj-tags"><span class="proj-tag">Angular</span><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">MySQL</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-icon">🔐</div></div>
+      <div class="proj-title">Auth & User Management Portal</div>
+      <div class="proj-desc">Secure user authentication system with JWT, role-based permissions, and admin portal. Built with Angular guards on the frontend and Spring Security on the backend.</div>
+      <div class="proj-tags"><span class="proj-tag">JWT</span><span class="proj-tag">Spring Security</span><span class="proj-tag">Angular</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="contact-box">
+    <h3>Let's work together</h3>
+    <p class="sub">I'm actively looking for new opportunities. Feel free to reach out through any channel below!</p>
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-item-icon ci-phone">📞</div>
+        <div>
+          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-value">+91 93078 35712</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon ci-email">✉</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">ashwiniyedave93@gmail.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link cl-email" href="mailto:ashwiniyedave93@gmail.com">✉ Send Email</a>
+      <a class="contact-link cl-linkedin" href="https://linkedin.com/in/ashwiniyedave/" target="_blank">in LinkedIn Profile</a>
+      <a class="contact-link cl-github" href="https://github.com/ashwiniyedave" target="_blank">⌥ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built with care · Ashwini Yedave © 2025 · Software Engineer · ashwiniyedave93@gmail.com
+</footer>
+
+</body>
+</html>
