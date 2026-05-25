@@ -12,6 +12,9 @@
   --text:#e8eaf6;--muted:#8892b0;
   --border:rgba(79,142,247,0.15);--card:rgba(22,27,46,0.85);
 }
+html {
+  scroll-behavior: smooth;
+}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
 h1,h2,h3,h4{font-family:'Syne',sans-serif}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(11,14,23,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -209,7 +212,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;color:v
         </div>
         <div style="margin-bottom:1.2rem">
           <div style="font-family:'Syne',sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem">Primary Stack</div>
-          <div style="font-weight:500">Angular · Java · Spring Boot</div>
+          <div style="font-weight:500">Angular · Java · Spring Boot · MYSQL</div>
         </div>
         <div style="margin-bottom:1.2rem">
           <div style="font-family:'Syne',sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem">Experience</div>
@@ -252,8 +255,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;color:v
     <div class="skill-card">
       <div class="skill-card-title"><div class="skill-icon icon-green">🛠</div> Tools & DevOps</div>
       <ul class="skill-list">
-        <li class="skill-item"><span class="skill-name">Git / GitHub / GitLab</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></li>
-        <li class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">Git / GitHub</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></li>
         <li class="skill-item"><span class="skill-name">Jenkins / CI/CD</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:68%"></div></div></li>
         <li class="skill-item"><span class="skill-name">Postman / Swagger</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></li>
       </ul>
@@ -261,7 +263,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;color:v
     <div class="skill-card">
       <div class="skill-card-title"><div class="skill-icon icon-amber">🗄</div> Databases</div>
       <ul class="skill-list">
-        <li class="skill-item"><span class="skill-name">MySQL / PostgreSQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></li>
+        <li class="skill-item"><span class="skill-name">MySQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></li>
         <li class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></li>
         <li class="skill-item"><span class="skill-name">Hibernate / JPA</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></li>
         <li class="skill-item"><span class="skill-name">SQL Query Optimization</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></li>
